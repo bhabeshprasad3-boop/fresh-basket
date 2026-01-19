@@ -2,7 +2,7 @@
 
 A modern, responsive e-commerce web application for buying fresh vegetables and fruits. Built with React.js and Firebase.
 
-🔗 **Live Demo:** 
+🔗 **Live Demo:** https://fresh-basket-shop.netlify.app/
 
 
 ## 🚀 Features
