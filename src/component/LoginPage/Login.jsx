@@ -15,15 +15,20 @@ const Login = () => {
     })
 
     const handleChange = (e) => {
-        
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+    // --- 1. EMAIL LOGIN UPDATE ---
     const handleSubmit = async (e) => {
         e.preventDefault(); 
 
         try {
-            await signInWithEmailAndPassword(auth, formData.email, formData.password);
+            const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+            
+            // ✅ YE LINE ADD KI HAI (User data save karne ke liye)
+            // Hum 'users' naam se save kar rahe hain taaki Product page match kar sake
+            localStorage.setItem('users', JSON.stringify(userCredential.user));
+            
             toast.success("Login Successful! Welcome Back");
             navigate('/');
         } catch (error) {
@@ -32,21 +37,23 @@ const Login = () => {
         }
     }
 
+    // --- 2. GOOGLE LOGIN UPDATE ---
     const handleGoogleLogin = async () => {
         try {
-          
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            
+            // ✅ YE LINE ADD KI HAI
+            localStorage.setItem('users', JSON.stringify(result.user));
+            
             toast.success("Logged in with Google!");
             navigate('/');
         } catch (error) {
             console.error(error);
             toast.error(error.message);
         }
-
     }
 
     return (
-        
         <div className="min-h-screen flex items-center justify-center bg-zinc-100 px-4">
             <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full border border-gray-100">
 
@@ -69,7 +76,6 @@ const Login = () => {
                             className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 bg-gray-50" required />
                     </div>
 
-                    {/* Password Field */}
                     <div className="relative">
                         <span className="absolute left-3 top-3.5 text-zinc-400 text-lg"><FaLock /></span>
                         <input type="password"
@@ -80,24 +86,23 @@ const Login = () => {
                             className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 bg-gray-50" required />
                     </div>
 
-                    <button type="submit" className="w-full bg-linear-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
+                    <button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
                         Login
                     </button>
-                    <Link to='/forgotPassword' className='text-orange-500 hover:underline font-semibold'>Forgot Password?</Link>
+                    <div className="text-right">
+                        <Link to='/forgotPassword' className='text-orange-500 hover:underline font-semibold text-sm'>Forgot Password?</Link>
+                    </div>
                 </form>
 
-                {/* Divider */}
-                <div className="mt-3 mb-3 flex items-center">
+                <div className="mt-6 mb-6 flex items-center">
                     <div className="flex-1 h-px bg-gray-200"></div>
                     <span className="px-3 text-sm text-zinc-400">OR</span>
                     <div className="flex-1 h-px bg-gray-200"></div>
                 </div>
 
-                {/* Google Button */}
                 <div>
                     <button
                         onClick={handleGoogleLogin}
-                        
                         type="button" 
                         className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition-colors font-medium text-gray-700">
                         <FaGoogle className="text-red-500 text-xl" /> Continue with Google
