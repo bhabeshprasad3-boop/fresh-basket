@@ -5,7 +5,7 @@ import Cards from '../Cards/Cards';
 import { Link } from 'react-router-dom';
 
 const Product = ({ query }) => {
-    const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'SeaFood', 'Meat'];
+    const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'SeaFood'];
 
     const [activeTab, setActivetab] = useState('All');
 
@@ -51,8 +51,11 @@ const Product = ({ query }) => {
                 <div className='grid grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 mt-10 md:mt-20'>
                     {/* Agar product mile toh dikhao, nahi toh 'Not Found' message */}
                     {renderCards.length > 0 ? renderCards : (
-                        <div className='col-span-full text-center text-zinc-500 text-lg py-10'>
-                            No products found matching "{query}"
+                        <div className='col-span-full flex flex-col items-center justify-center py-16'>
+                            <p className='text-xl text-zinc-500 font-medium'>
+                                No results found for "<span className='text-orange-500 font-bold'>{query}</span>"
+                            </p>
+                            <p className='text-zinc-400 text-sm mt-2'>Try checking your spelling or use different keywords.</p>
                         </div>
                     )}
                 </div>

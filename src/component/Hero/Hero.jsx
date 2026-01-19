@@ -1,15 +1,15 @@
 import React from 'react'
 import Grocery from '../../image/grocery.png'
-import Button from '../Button/Button'
+
 
 const Hero = () => {
     return (
-        <section className='bg-white'>
-            <div className='max-w-7xl min-h-screen mx-auto px-10 flex md:flex-row flex-col items-center justify-center gap-10  overflow-hidden'>
+        <section >
+            <div className='max-w-7xl mt-10 mx-auto px-10 flex md:flex-row flex-col items-center justify-center gap-10 overflow-hidden '>
 
                 {/* Hero Content */}
                 <div className='flex-1 flex flex-col items-start'>
-                    <span className='bg-orange-100 text-orange-500 text-sm md:text-lg px-4 py-1.5 rounded-full font-medium mb-4 inline-block'>
+                    <span className='bg-orange-100 text-orange-500 text-sm md:text-lg px-4 py-1.5 rounded-full font-medium mb-3 mt-5 inline-block'>
                         Export Best Quality...
                     </span>
 

@@ -14,7 +14,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 const Navbar = ({ setQuery }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const[search,setSearch] = useState("")
+    
     
     
     const navigate = useNavigate();
@@ -80,6 +80,7 @@ const Navbar = ({ setQuery }) => {
                                 placeholder='Search items...'
                                 onChange={(e) => setQuery(e.target.value)}
                                 className='flex-1 bg-transparent focus:outline-none text-gray-700 placeholder-gray-400 text-sm'
+                               
                                 
                             />
                             <button className='bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors'>

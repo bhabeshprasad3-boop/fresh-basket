@@ -20,7 +20,7 @@ const CategoryPage = ({ title, FruitsBanner, categories = [] }) => {
   return (
     <div>
       <Banner title={title} FruitsBanner={FruitsBanner} />
-      <div className='grid md:grid-cols-4 grid-cols-1 gap-9 py-20 px-10 max-w-7xl mx-auto'>{renderProduct}</div>
+      <div className='grid md:grid-cols-4 grid-cols-2 gap-9 py-20 px-10 max-w-7xl mx-auto'>{renderProduct}</div>
     </div>
   )
 }

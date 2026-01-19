@@ -4,8 +4,7 @@ import { FaLocationDot, FaPhone, FaEnvelope, FaPaperPlane, FaLocationCrosshairs 
 import { ImSpinner8 } from "react-icons/im"; 
 
 const Contact = () => {
-  // 1. STATE FOR MAP URL (Default is the Store Location)
-  // We use a Google Maps Embed link defaulting to a sample location (New Delhi)
+  
   const defaultLocation = "https://maps.google.com/maps?q=Connaught+Place,New+Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed";
   const [mapUrl, setMapUrl] = useState(defaultLocation);
   
@@ -69,7 +68,7 @@ const Contact = () => {
         <div className='bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row'>
             
             {/* LEFT SIDE: Contact Info & Map */}
-            <div className='w-full md:w-5/12 bg-gradient-to-br from-orange-500 to-orange-600 p-10 text-white flex flex-col justify-between relative overflow-hidden'>
+            <div className='w-full md:w-5/12 bg-linear-to-br from-orange-500 to-orange-600 p-10 text-white flex flex-col justify-between relative overflow-hidden'>
                 
                 {/* Decorative Circles */}
                 <div className='absolute -top-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full'></div>
@@ -79,7 +78,7 @@ const Contact = () => {
                     <h2 className='text-3xl font-bold mb-6'>Contact Information</h2>
                     <div className='space-y-6'>
                         <div className='flex items-start gap-4'>
-                            <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0'>
+                            <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0'>
                                 <FaPhone />
                             </div>
                             <div>
@@ -88,7 +87,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <div className='flex items-start gap-4'>
-                            <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0'>
+                            <div className='w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0'>
                                 <FaLocationDot />
                             </div>
                             <div>

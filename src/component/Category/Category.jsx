@@ -14,7 +14,7 @@ const Category = () => {
             <div key={card.id} className='w-full'>
 
                 {/* Card Image */}
-                <div className='w-full min-h-[30vh] relative -mb-10'>
+                <div className='w-full min-h-[15vh] relative -mb-10 mt-10'>
                     <img src={card.image} alt=""
                         className='absolute bottom-0 left-1/2 -translate-x-1/2 max-w-full h-auto' />
 
@@ -32,7 +32,7 @@ const Category = () => {
 
     return (
         <section>
-            <div className='py-20 max-w-7xl mx-auto px-10'>
+            <div className='py-10 max-w-7xl mx-auto px-10'>
                 <Heading highlight="Shop" heading="By Category" />
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8 md:mt-15'>
                     {renderCard}

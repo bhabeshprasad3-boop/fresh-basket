@@ -36,7 +36,7 @@ const ForgotPassword = () => {
         {/* Header Section */}
         <div className="text-center mb-8">
           <h2 className="text-3xl font-extrabold text-gray-800 mb-2">
-            Forgot Password? 🔒
+            Forgot Password?
           </h2>
           <p className="text-gray-500 text-sm">
             Don't worry! It happens. Please enter the email associated with your account.
@@ -64,7 +64,7 @@ const ForgotPassword = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-3.5 rounded-2xl shadow-lg hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="w-full bg-linear-to-r from-orange-500 to-red-500 text-white font-bold py-3.5 rounded-2xl shadow-lg hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             Send Reset Link
           </button>
