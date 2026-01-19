@@ -53,7 +53,7 @@ const ForgotPassword = () => {
             <input
               type="email"
               name="email"
-              value={input} // Controlled input
+              value={input} 
               placeholder="Enter your Email"
               onChange={handleUserInput}
               className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-100 transition-all bg-gray-50 text-gray-700 font-medium"

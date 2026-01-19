@@ -10,7 +10,6 @@ const AllProduct = ({ query }) => {
 
   const navigate = useNavigate(); 
 
-  // --- 1. STATE INITIALIZATION ---
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem("wishlist");
     return saved ? JSON.parse(saved) : [];
@@ -21,7 +20,6 @@ const AllProduct = ({ query }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // --- 2. SEARCH FILTER LOGIC ---
   const productKey = ["name", "category", "price"];
   const filterProducts = products.filter((item) => {
     if (!query) return true
@@ -32,7 +30,6 @@ const AllProduct = ({ query }) => {
     })
   })
 
-  // --- 3. HANDLE LIKE ---
   const handleLike = (e, product) => {
     e.stopPropagation(); 
     
@@ -49,9 +46,16 @@ const AllProduct = ({ query }) => {
     localStorage.setItem("wishlist", JSON.stringify(newWishlist));
   };
 
-  // --- 4. ADD TO CART FUNCTION ---
   const handleAddToCart = (e, product) => {
     e.stopPropagation();
+
+    const isLoggedIn = localStorage.getItem('users');
+    
+    if (!isLoggedIn) {
+      toast.error("Please Login First to add items!");
+      navigate('/login');
+      return;
+    }
 
     const existingItem = cart.find((item) => item.id === product.id);
     let newCart;
@@ -76,15 +80,12 @@ const AllProduct = ({ query }) => {
         return (
           <div 
             key={food.id}
-           
             onClick={() => navigate(`/productinfo/${food.id}`)}
             className='bg-zinc-100 p-2 md:p-5 rounded-xl transition-transform hover:scale-105 duration-300 cursor-pointer'
           >
 
-            {/* Card Icons */}
             <div className='flex justify-between items-center'>
               <span 
-
                 onClick={(e) => handleLike(e, food)}
                 className={`text-xl md:text-3xl cursor-pointer hover:text-red-500 transition-colors ${isLiked ? 'text-red-500' : 'text-zinc-300'}`}
               >
@@ -92,7 +93,6 @@ const AllProduct = ({ query }) => {
               </span>
 
               <button 
-               
                 onClick={(e) => handleAddToCart(e, food)}
                 className='bg-linear-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
               >
@@ -108,7 +108,6 @@ const AllProduct = ({ query }) => {
               />
             </div>
 
-            {/* Card Content */}
             <div className='text-center'>
               <h3 className='text-xs md:text-lg font-semibold truncate'>
                 {food.name}
@@ -118,7 +117,6 @@ const AllProduct = ({ query }) => {
                 ${food.price.toFixed(2)}
               </p>
 
-              {/* Add to Cart Button */}
               <div 
                 className="scale-75 md:scale-100 origin-bottom"
                 onClick={(e) => handleAddToCart(e, food)}

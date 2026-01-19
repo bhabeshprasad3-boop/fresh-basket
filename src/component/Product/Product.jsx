@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import Heading from '../Heading/Heading'
-import ProductList from '../Product/ProductList'; // Path check karlena
+import ProductList from '../Product/ProductList'; 
 import Cards from '../Cards/Cards';
-import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast'; // 1. Toast import kiya
+import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast'; 
 
 const Product = ({ query }) => {
     const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'SeaFood'];
     const [activeTab, setActivetab] = useState('All');
+    
+    const navigate = useNavigate();
 
     const [cart, setCart] = useState(() => {
         const saved = localStorage.getItem("cart");
@@ -15,7 +17,14 @@ const Product = ({ query }) => {
     });
 
     const handleAddToCart = (e, product) => {
-        
+        const isLoggedIn = localStorage.getItem('users'); 
+
+        if (!isLoggedIn) {
+            toast.error("Please Login First to add items!");
+            navigate('/login');
+            return;
+        }
+
         const existingItem = cart.find((item) => item.id === product.id);
         let newCart;
 
@@ -29,10 +38,9 @@ const Product = ({ query }) => {
 
         setCart(newCart);
         localStorage.setItem("cart", JSON.stringify(newCart));
-        toast.success(`${product.name} added to Cart! 🛒`);
+        toast.success(`${product.name} added to Cart!`);
     };
 
-    // --- FILTER LOGIC ---
     let filterProduct = ProductList.filter((item) => {
         const categoryMatch = activeTab === 'All' ? true : item.category === activeTab;
         const searchMatch = item.name.toLowerCase().includes((query || "").toLowerCase());
@@ -81,13 +89,12 @@ const Product = ({ query }) => {
                             <p className='text-xl text-zinc-500 font-medium'>
                                 No results found for "<span className='text-orange-500 font-bold'>{query}</span>"
                             </p>
-                            <p className='text-zinc-400 text-sm mt-2'>Try checking your spelling or use different keywords.</p>
                         </div>
                     )}
                 </div>
 
                 <div className='mt-10 md:mt-15 mx-auto w-fit'>
-                    <Link to='/allproduct' className='bg-linear-to-b from-orange-400 to-orange-500 text-white px-8 py-3 rounded-lg md:text-lg text-md hover:scale-105 hover:to-orange-600 transition-all duration-300 cursor-pointer block'>
+                    <Link to='/allproduct' className='bg-gradient-to-b from-orange-400 to-orange-500 text-white px-8 py-3 rounded-lg md:text-lg text-md hover:scale-105 hover:to-orange-600 transition-all duration-300 cursor-pointer block'>
                         View All
                     </Link>
                 </div>
