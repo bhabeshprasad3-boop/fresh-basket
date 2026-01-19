@@ -61,7 +61,7 @@ Bhabesh Prasad
 
 GitHub: @bhabeshprasad3-boop
 
-LinkedIn: Your LinkedIn Profile Link
+LinkedIn: https://www.linkedin.com/in/bhavesh-prasad-89181122b/
 
 Made with ❤️ by Bhabesh
 
