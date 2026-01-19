@@ -12,10 +12,8 @@ import userPic5 from '../../image/customer5.jpg'
 
 const Testimonial = () => {
     
-    // 1. Create a reference for the scrollable container
     const scrollRef = useRef(null);
 
-    // 2. Logic to scroll left or right
     const scrollHandler = (direction) => {
         if (scrollRef.current) {
             const scrollAmount = 400; // Adjust based on card width + gap
@@ -27,7 +25,6 @@ const Testimonial = () => {
         }
     };
 
-    // 3. Full Data with original text
     const users = [
         {
             id: 1,

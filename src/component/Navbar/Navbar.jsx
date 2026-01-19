@@ -117,7 +117,7 @@ const Navbar = ({ setQuery }) => {
                                 </Link>
                             )}
 
-                            {/* Mobile Hamburger Button (Ye ab Tablet/MD screen par bhi dikhega) */}
+                            {/* Mobile Hamburger Button*/}
                             <button className='lg:hidden text-3xl text-gray-800 focus:outline-none' onClick={toggleMenu}>
                                 {isOpen ? <IoClose /> : <TbMenu2 />}
                             </button>

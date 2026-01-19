@@ -8,25 +8,21 @@ const Cards = (props) => {
     
     const navigate = useNavigate();
 
-    // 1. Card par click karne se Detail Page par jao
+    
     const handleCardClick = () => {
         navigate(`/productinfo/${props.id}`);
     }
 
-    // 2. ✅ CART LOGIC: Jab Plus (+) ya "Add to Cart" dabayein
     const handleAddToCartClick = (e) => {
-        e.stopPropagation(); // Page change hone se roko
+        e.stopPropagation(); 
         
-        // Agar parent ne function bheja hai, toh use call karo
         if (props.handleAddToCart) {
             props.handleAddToCart(e);
         }
     }
 
-    // 3. ✅ WISHLIST LOGIC: Jab Heart dabayein (Filhal sirf stopPropagation)
     const handleLikeClick = (e) => {
         e.stopPropagation();
-        // Future mein yahan wishlist logic aayega
     }
 
     return (
@@ -40,7 +36,7 @@ const Cards = (props) => {
                 <div className='flex justify-between items-center'>
                     {/* Heart Icon */}
                     <span 
-                        onClick={handleLikeClick} // Ispe alag function lagaya
+                        onClick={handleLikeClick} 
                         className='text-zinc-300 text-xl md:text-3xl cursor-pointer hover:text-red-500'
                     >
                         <FaHeart />
@@ -48,7 +44,7 @@ const Cards = (props) => {
 
                     {/* Plus Button */}
                     <button 
-                        onClick={handleAddToCartClick} // ✅ Yahan Cart function lagaya
+                        onClick={handleAddToCartClick} 
                         className='bg-gradient-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
                     >
                         <HiOutlinePlusSm />
@@ -76,7 +72,7 @@ const Cards = (props) => {
                     
                     {/* Main Add to Cart Button */}
                     <div className="scale-75 md:scale-100 origin-bottom" onClick={handleAddToCartClick}> 
-                        {/* ✅ Yahan bhi Cart function lagaya */}
+                       
                         <Button content="Add to Cart" />
                     </div>
                 </div>

@@ -9,26 +9,21 @@ const Product = ({ query }) => {
     const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'SeaFood'];
     const [activeTab, setActivetab] = useState('All');
 
-    // --- 2. CART STATE (LocalStorage se load kiya) ---
     const [cart, setCart] = useState(() => {
         const saved = localStorage.getItem("cart");
         return saved ? JSON.parse(saved) : [];
     });
 
-    // --- 3. ADD TO CART FUNCTION ---
     const handleAddToCart = (e, product) => {
-        // Note: e.stopPropagation() ki zaroorat nahi kyunki Cards.jsx handle kar raha hai
         
         const existingItem = cart.find((item) => item.id === product.id);
         let newCart;
 
         if (existingItem) {
-            // Agar cart mein pehle se hai, toh quantity badha do
             newCart = cart.map((item) =>
                 item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
             );
         } else {
-            // Naya item add karo quantity 1 ke sath
             newCart = [...cart, { ...product, quantity: 1 }];
         }
 
@@ -44,7 +39,6 @@ const Product = ({ query }) => {
         return categoryMatch && searchMatch;
     });
 
-    // --- 4. RENDER CARDS (Props pass kiye) ---
     const renderCards = filterProduct.slice(0, 8).map(food => {
         return (
             <Cards 
@@ -53,7 +47,6 @@ const Product = ({ query }) => {
                 image={food.image} 
                 name={food.name} 
                 price={food.price}
-                // ✅ Ye naya prop add kiya hai
                 handleAddToCart={(e) => handleAddToCart(e, food)} 
             />
         )
@@ -94,7 +87,7 @@ const Product = ({ query }) => {
                 </div>
 
                 <div className='mt-10 md:mt-15 mx-auto w-fit'>
-                    <Link to='/allproduct' className='bg-gradient-to-b from-orange-400 to-orange-500 text-white px-8 py-3 rounded-lg md:text-lg text-md hover:scale-105 hover:to-orange-600 transition-all duration-300 cursor-pointer block'>
+                    <Link to='/allproduct' className='bg-linear-to-b from-orange-400 to-orange-500 text-white px-8 py-3 rounded-lg md:text-lg text-md hover:scale-105 hover:to-orange-600 transition-all duration-300 cursor-pointer block'>
                         View All
                     </Link>
                 </div>

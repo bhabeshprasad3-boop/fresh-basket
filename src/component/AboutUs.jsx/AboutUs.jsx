@@ -1,11 +1,11 @@
 import React from 'react'
-import Heading from '../Heading/Heading' // Tumhara existing Heading component
+import Heading from '../Heading/Heading' 
 import { FaSeedling, FaTruckFast, FaHandHoldingHeart } from "react-icons/fa6";
-import Button from '../Button/Button'; // Tumhara existing Button component agar hai, nahi to normal button use kar lenge
+import Button from '../Button/Button'; 
 
 const AboutUs = () => {
 
-  // Placeholder Images URLs (Fresh Food theme)
+ 
   const heroImage = "https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3";
   const storyImage = "https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3";
 
@@ -73,7 +73,7 @@ const AboutUs = () => {
                         We decided to change that. By building a network of trusted local farmers and optimizing our logistics, we ensure that most of our produce is harvested and delivered within 24 hours. <strong>Fresh Basket isn't just a store; it's a commitment to healthier living.</strong>
                     </p>
 
-                    {/* Agar tumhara Button component hai to wo use karo, nahi to ye simple button */}
+                    
                     {/* <Button content="Contact Us" /> */}
                     <button className='bg-gradient-to-r from-orange-400 to-orange-600 text-white px-8 py-3 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all'>
                         Get In Touch

@@ -1,9 +1,9 @@
 import React from 'react'
 import Banner from '../Banner/Banner'
-import ProductList from '../Product/ProductList' // Path check karlena
+import ProductList from '../Product/ProductList' 
 import Cards from '../Cards/Cards'
 
-// 1. handleAddToCart prop receive kiya
+
 const CategoryPage = ({ title, FruitsBanner, categories = [], handleAddToCart }) => {
 
   let filterProduct = categories.includes('all') ? ProductList
@@ -13,11 +13,10 @@ const CategoryPage = ({ title, FruitsBanner, categories = [], handleAddToCart })
     return (
       <Cards 
         key={food.id} 
-        id={food.id} // 2. ID pass ki (Navigation ke liye zaroori)
+        id={food.id} 
         image={food.image} 
         name={food.name} 
         price={food.price}
-        // 3. Cart Function pass kiya
         handleAddToCart={(e) => handleAddToCart(e, food)}
       />
     )

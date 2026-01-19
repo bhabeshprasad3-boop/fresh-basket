@@ -4,14 +4,12 @@ import { FaMobileScreenButton, FaBasketShopping, FaTruckFast, FaFaceSmileBeam } 
 
 const HowItWorks = () => {
 
-  // Steps Data (Updated with working Unsplash Images)
   const steps = [
     {
       id: "01",
       title: "Browse & Order",
       desc: "Download our app or use the website to explore thousands of fresh products. Filter by category, price, or dietary needs and add your favorites to the cart.",
       icon: <FaMobileScreenButton />,
-      // Image: Online Shopping / Phone
       img: "https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?q=80&w=2574&auto=format&fit=crop" 
     },
     {
@@ -19,7 +17,6 @@ const HowItWorks = () => {
       title: "We Handpick the Best",
       desc: "Once confirmed, our expert team selects the freshest produce directly from our partner farms. We quality check every tomato, apple, and leafy green.",
       icon: <FaBasketShopping />,
-      // Image: Fresh Fruits & Veggies
       img: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=2670&auto=format&fit=crop" 
     },
     {
@@ -27,7 +24,6 @@ const HowItWorks = () => {
       title: "Express Delivery",
       desc: "Our delivery heroes pick up your packed order and race to your location. We ensure cold-chain storage so your ice cream stays frozen and veggies stay crisp.",
       icon: <FaTruckFast />,
-      // Image: Delivery Box
       img: "https://images.unsplash.com/photo-1586769852044-692d6e3703f0?q=80&w=2574&auto=format&fit=crop" 
     },
     {
@@ -35,7 +31,6 @@ const HowItWorks = () => {
       title: "Enjoy Freshness",
       desc: "Receive your package at your doorstep. Unpack happiness and cook delicious, healthy meals for your family. If you're not happy, we offer instant returns!",
       icon: <FaFaceSmileBeam />,
-      // Image: Healthy Meal
       img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2670&auto=format&fit=crop" 
     }
   ];
@@ -51,11 +46,9 @@ const HowItWorks = () => {
         </p>
       </div>
 
-      {/* 2. Steps Loop (Zig-Zag Layout) */}
       <div className='max-w-7xl mx-auto px-4 py-10 md:py-20 flex flex-col gap-20'>
         
         {steps.map((step, index) => {
-           // Logic for Zig-Zag: Even left, Odd right
            const isEven = index % 2 === 0;
 
            return (
@@ -63,7 +56,6 @@ const HowItWorks = () => {
                 
                 {/* Image Side */}
                 <div className='w-full md:w-1/2 relative group'>
-                    {/* Decorative Background Blob */}
                     <div className={`absolute top-5 ${isEven ? '-left-5' : '-right-5'} w-full h-full bg-orange-100 rounded-3xl -z-10 group-hover:scale-105 transition-transform duration-500`}></div>
                     
                     <div className='rounded-3xl overflow-hidden shadow-xl h-[300px] md:h-[400px]'>
@@ -100,7 +92,7 @@ const HowItWorks = () => {
       </div>
 
       {/* 3. CTA (Call to Action) */}
-      <div className='bg-gradient-to-r from-orange-500 to-orange-400 py-20 text-center text-white px-4 mt-10'>
+      <div className='bg-linear-to-r from-orange-500 to-orange-400 py-20 text-center text-white px-4 mt-10'>
           <h2 className='text-3xl md:text-4xl font-bold mb-6'>Ready to taste the difference?</h2>
           <p className='text-orange-100 mb-8 text-lg'>Join thousands of happy customers today.</p>
           <div className='w-fit mx-auto bg-white rounded-full p-1'>

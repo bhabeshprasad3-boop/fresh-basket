@@ -5,13 +5,11 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Cart = () => {
   
-  // 1. STATE CHANGED: Ab ye LocalStorage se data uthayega
   const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem("cart");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // 2. USE EFFECT: Jab bhi cart change ho (Delete/Update), usse LocalStorage mein save karo
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -19,7 +17,7 @@ const Cart = () => {
   // --- CALCULATIONS ---
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const shippingFee = subtotal > 500 ? 0 : 40; 
-  // Agar cart khali hai to shipping 0 dikhao
+ 
   const total = subtotal + (cartItems.length > 0 ? shippingFee : 0);
 
   // --- FUNCTIONS ---

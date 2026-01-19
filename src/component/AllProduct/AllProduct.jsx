@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom' // 1. Router Import kiya
-import products from '../Product/ProductList' // Path check kr lena
+import { useNavigate } from 'react-router-dom' 
+import products from '../Product/ProductList' 
 import Button from '../Button/Button'
 import { FaHeart } from 'react-icons/fa6'
 import { HiOutlinePlusSm } from 'react-icons/hi'
@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 
 const AllProduct = ({ query }) => {
 
-  const navigate = useNavigate(); // 2. Hook banaya
+  const navigate = useNavigate(); 
 
   // --- 1. STATE INITIALIZATION ---
   const [wishlist, setWishlist] = useState(() => {
@@ -34,7 +34,7 @@ const AllProduct = ({ query }) => {
 
   // --- 3. HANDLE LIKE ---
   const handleLike = (e, product) => {
-    e.stopPropagation(); // 🛑 Card click hone se rokega
+    e.stopPropagation(); 
     
     const isLiked = wishlist.some((item) => item.id === product.id);
     let newWishlist;
@@ -51,7 +51,7 @@ const AllProduct = ({ query }) => {
 
   // --- 4. ADD TO CART FUNCTION ---
   const handleAddToCart = (e, product) => {
-    e.stopPropagation(); // 🛑 Card click hone se rokega
+    e.stopPropagation();
 
     const existingItem = cart.find((item) => item.id === product.id);
     let newCart;
@@ -76,7 +76,7 @@ const AllProduct = ({ query }) => {
         return (
           <div 
             key={food.id}
-            // ✅ Card Click Logic
+           
             onClick={() => navigate(`/productinfo/${food.id}`)}
             className='bg-zinc-100 p-2 md:p-5 rounded-xl transition-transform hover:scale-105 duration-300 cursor-pointer'
           >
@@ -84,7 +84,7 @@ const AllProduct = ({ query }) => {
             {/* Card Icons */}
             <div className='flex justify-between items-center'>
               <span 
-                // ✅ Heart Click Logic
+
                 onClick={(e) => handleLike(e, food)}
                 className={`text-xl md:text-3xl cursor-pointer hover:text-red-500 transition-colors ${isLiked ? 'text-red-500' : 'text-zinc-300'}`}
               >
@@ -92,9 +92,9 @@ const AllProduct = ({ query }) => {
               </span>
 
               <button 
-                // ✅ Plus Button Logic
+               
                 onClick={(e) => handleAddToCart(e, food)}
-                className='bg-gradient-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
+                className='bg-linear-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
               >
                 <HiOutlinePlusSm />
               </button>

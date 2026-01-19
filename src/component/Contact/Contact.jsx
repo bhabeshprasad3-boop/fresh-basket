@@ -116,7 +116,7 @@ const Contact = () => {
                     <div className='rounded-xl overflow-hidden h-48 w-full shadow-lg border-2 border-white/20 bg-gray-300'>
                         <iframe 
                             title="User Location Map"
-                            src={mapUrl} // This URL changes when user clicks the button
+                            src={mapUrl} 
                             width="100%" 
                             height="100%" 
                             style={{border:0}} 
