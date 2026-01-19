@@ -89,7 +89,7 @@ const Login = () => {
                     <button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
                         Login
                     </button>
-                    <div className="text-right">
+                    <div className="text-center">
                         <Link to='/forgotPassword' className='text-orange-500 hover:underline font-semibold text-sm'>Forgot Password?</Link>
                     </div>
                 </form>
