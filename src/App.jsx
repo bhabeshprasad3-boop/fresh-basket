@@ -14,6 +14,8 @@ import Contact from './component/Contact/Contact'
 import Register from './component/RegisterPage/Register'
 import Login from './component/LoginPage/Login'
 import { Toaster } from 'react-hot-toast';
+import ForgotPassword from './component/Forgot-Password/ForgotPassword'
+
 
 
 
@@ -50,7 +52,8 @@ const App = () => {
         </Route>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-
+        <Route path='forgotpassword' element={<ForgotPassword />} />
+        
       </Routes>
 
 

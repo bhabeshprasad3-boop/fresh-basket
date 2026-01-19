@@ -83,10 +83,11 @@ const Login = () => {
                     <button type="submit" className="w-full bg-linear-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
                         Login
                     </button>
+                    <Link to='/forgotPassword' className='text-red-500 hover:underline'>Forgot Password?</Link>
                 </form>
 
                 {/* Divider */}
-                <div className="my-6 flex items-center">
+                <div className="mt-3 mb-3 flex items-center">
                     <div className="flex-1 h-px bg-gray-200"></div>
                     <span className="px-3 text-sm text-zinc-400">OR</span>
                     <div className="flex-1 h-px bg-gray-200"></div>
