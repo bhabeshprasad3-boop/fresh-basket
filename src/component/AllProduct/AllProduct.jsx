@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import products from '../Product/ProductList'
-
+import { useNavigate } from 'react-router-dom' // 1. Router Import kiya
+import products from '../Product/ProductList' // Path check kr lena
 import Button from '../Button/Button'
 import { FaHeart } from 'react-icons/fa6'
 import { HiOutlinePlusSm } from 'react-icons/hi'
@@ -8,7 +8,9 @@ import toast from 'react-hot-toast'
 
 const AllProduct = ({ query }) => {
 
-  // --- 1. STATE INITIALIZATION (Load from Local Storage) ---
+  const navigate = useNavigate(); // 2. Hook banaya
+
+  // --- 1. STATE INITIALIZATION ---
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem("wishlist");
     return saved ? JSON.parse(saved) : [];
@@ -30,39 +32,36 @@ const AllProduct = ({ query }) => {
     })
   })
 
-
-  const handleLike = (product) => {
+  // --- 3. HANDLE LIKE ---
+  const handleLike = (e, product) => {
+    e.stopPropagation(); // 🛑 Card click hone se rokega
     
     const isLiked = wishlist.some((item) => item.id === product.id);
-
     let newWishlist;
     if (isLiked) {
-     
       newWishlist = wishlist.filter((item) => item.id !== product.id);   
+      toast.error("Removed from Wishlist");
     } else {    
       newWishlist = [...wishlist, product];
+      toast.success("Added to Wishlist ❤️");
     }
-
     setWishlist(newWishlist);
     localStorage.setItem("wishlist", JSON.stringify(newWishlist));
   };
 
   // --- 4. ADD TO CART FUNCTION ---
-  const handleAddToCart = (product) => {
-    // Check karo cart mein pehle se hai kya
-    const existingItem = cart.find((item) => item.id === product.id);
+  const handleAddToCart = (e, product) => {
+    e.stopPropagation(); // 🛑 Card click hone se rokega
 
+    const existingItem = cart.find((item) => item.id === product.id);
     let newCart;
     if (existingItem) {
-      // Agar hai, to quantity badha do
       newCart = cart.map((item) =>
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
     } else {
-      // Naya item add karo quantity 1 ke sath
       newCart = [...cart, { ...product, quantity: 1 }];
     }
-
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
     toast.success(`${product.name} added to Cart! 🛒`);
@@ -75,45 +74,56 @@ const AllProduct = ({ query }) => {
         const isLiked = wishlist.some((item) => item.id === food.id);
 
         return (
-          <div className='bg-zinc-100 p-2 md:p-5 rounded-xl transition-transform hover:scale-105 duration-300'>
+          <div 
+            key={food.id}
+            // ✅ Card Click Logic
+            onClick={() => navigate(`/productinfo/${food.id}`)}
+            className='bg-zinc-100 p-2 md:p-5 rounded-xl transition-transform hover:scale-105 duration-300 cursor-pointer'
+          >
 
             {/* Card Icons */}
             <div className='flex justify-between items-center'>
-              <span className='text-zinc-300 text-xl md:text-3xl cursor-pointer hover:text-red-500'>
+              <span 
+                // ✅ Heart Click Logic
+                onClick={(e) => handleLike(e, food)}
+                className={`text-xl md:text-3xl cursor-pointer hover:text-red-500 transition-colors ${isLiked ? 'text-red-500' : 'text-zinc-300'}`}
+              >
                 <FaHeart />
               </span>
 
-
-              <button className='bg-linear-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'>
+              <button 
+                // ✅ Plus Button Logic
+                onClick={(e) => handleAddToCart(e, food)}
+                className='bg-gradient-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
+              >
                 <HiOutlinePlusSm />
               </button>
             </div>
-
 
             <div className='w-full h-24 md:h-50 mt-2 md:mt-5 mb-2 md:mb-5'>
               <img
                 src={food.image}
                 alt={food.name}
-                className='w-full h-full object-contain mx-auto'
+                className='w-full h-full object-contain mx-auto mix-blend-multiply'
               />
             </div>
 
             {/* Card Content */}
             <div className='text-center'>
-              {/* Title: Mobile par text-xs (bahut chota), Desktop par text-lg */}
               <h3 className='text-xs md:text-lg font-semibold truncate'>
                 {food.name}
               </h3>
 
-              {/* Price: Mobile par text-sm, Desktop par text-lg */}
               <p className='font-bold mb-2 md:mb-3 text-sm md:text-lg text-orange-600'>
                 ${food.price.toFixed(2)}
               </p>
 
-              {/* Card Button: Button component ko bhi responsive classes pass karni hongi */}
-              {/* Agar Button component custom hai, toh usme 'className' prop add karein */}
-              <div className="scale-75 md:scale-100 origin-bottom">
-                <Button content="Shop Now" />
+              {/* Add to Cart Button */}
+              <div 
+                className="scale-75 md:scale-100 origin-bottom"
+                onClick={(e) => handleAddToCart(e, food)}
+              >
+                <Button content="Add to Cart" />
               </div>
             </div>
           </div>

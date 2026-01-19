@@ -15,6 +15,7 @@ import Register from './component/RegisterPage/Register'
 import Login from './component/LoginPage/Login'
 import { Toaster } from 'react-hot-toast';
 import ForgotPassword from './component/Forgot-Password/ForgotPassword'
+import ProductInfo from './component/ProductDetail/ProductDetail'
 
 
 
@@ -45,7 +46,11 @@ const App = () => {
           <Route path='/dairy' element={<Dairy />} />
           <Route path='/liked' element={<Liked />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/allproduct' element={<AllProduct query={debounceQuery} />} />
+          
+            <Route path='/allproduct' element={<AllProduct query={debounceQuery} />} />
+            <Route path="/productinfo/:id" element={<ProductInfo />} />
+           
+          
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/how-it-work' element={<HowItWorks />} />
           <Route path='/contact' element={<Contact />} />

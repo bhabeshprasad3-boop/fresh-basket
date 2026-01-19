@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FaEnvelope, FaArrowLeft } from 'react-icons/fa'; // Arrow icon add kiya
-import { Link } from 'react-router-dom'; // Back button ke liye
+import { FaEnvelope, FaArrowLeft } from 'react-icons/fa'; 
+import { Link } from 'react-router-dom'; 
 import { auth } from '../../config'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import toast from 'react-hot-toast';

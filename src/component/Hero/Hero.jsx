@@ -5,7 +5,7 @@ import Grocery from '../../image/grocery.png'
 const Hero = () => {
     return (
         <section >
-            <div className='max-w-7xl mt-10 mx-auto px-10 flex md:flex-row flex-col items-center justify-center gap-10 overflow-hidden '>
+            <div className='max-w-7xl h-screen mt-10 md:mt-0 mx-auto px-10 flex md:flex-row flex-col items-center justify-center gap-10 overflow-hidden '>
 
                 {/* Hero Content */}
                 <div className='flex-1 flex flex-col items-start'>

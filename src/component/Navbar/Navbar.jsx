@@ -73,7 +73,8 @@ const Navbar = ({ setQuery }) => {
                     {/* 3. SEARCH & ICONS SECTION */}
                     <div className='flex items-center gap-x-4'>
                         
-                        {/* Desktop Search Bar (Sirf Large Screen par dikhega) */}
+                        {/* Desktop Search Bar  */}
+                        
                         <div className='hidden lg:flex items-center border-2 border-orange-500 rounded-full pl-4 pr-1 py-1 w-72 bg-gray-50'>
                             <input
                                 type="text"
@@ -87,6 +88,7 @@ const Navbar = ({ setQuery }) => {
                                 <IoIosSearch className="text-xl"/>
                             </button>
                         </div>
+                        
 
                         {/* Right Side Icons */}
                         <div className='flex items-center gap-4'>
@@ -124,7 +126,7 @@ const Navbar = ({ setQuery }) => {
                 </nav>
 
                 {/* --- MOBILE/TABLET MENU OVERLAY --- */}
-                {/* 'md:hidden' hata diya aur 'lg:hidden' laga diya taaki tablet par bhi ye menu khule */}
+                
                 <div className={`absolute top-20 left-0 w-full bg-orange-500 shadow-xl flex flex-col items-center gap-6 py-8 lg:hidden transition-all duration-300 ease-in-out z-40 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-[150%] pointer-events-none'}`}>
                     
                     {/* Mobile Search */}
