@@ -18,19 +18,15 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    // --- 1. EMAIL LOGIN UPDATE ---
     const handleSubmit = async (e) => {
         e.preventDefault(); 
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
-            
-            // ✅ YE LINE ADD KI HAI (User data save karne ke liye)
-            // Hum 'users' naam se save kar rahe hain taaki Product page match kar sake
             localStorage.setItem('users', JSON.stringify(userCredential.user));
-            
             toast.success("Login Successful! Welcome Back");
             navigate('/');
+            
         } catch (error) {
             console.error(error)
             toast.error("Wrong email or password");
@@ -86,7 +82,7 @@ const Login = () => {
                             className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 bg-gray-50" required />
                     </div>
 
-                    <button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
+                    <button type="submit" className="w-full bg-linear-to-r from-orange-400 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
                         Login
                     </button>
                     <div className="text-center">

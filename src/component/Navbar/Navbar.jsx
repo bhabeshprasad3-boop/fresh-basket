@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { GoHeartFill } from "react-icons/go";
 import { HiShoppingBag } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
 import { TbMenu2 } from "react-icons/tb";
@@ -75,7 +74,7 @@ const Navbar = ({ setQuery }) => {
                         </div>
 
                         <div className='flex items-center gap-4'>
-                            <Link to='/liked' className='text-gray-700 hover:text-orange-500 text-2xl'><GoHeartFill /></Link>
+                            
                             <Link to='/cart' className='text-gray-700 hover:text-orange-500 text-2xl'><HiShoppingBag /></Link>
 
                             {userName ? (

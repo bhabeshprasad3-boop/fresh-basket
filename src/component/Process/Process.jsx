@@ -44,7 +44,6 @@ const Process = () => {
                     {/* Text Details */}
                     <div>
                         <h4 className='text-zinc-800 text-xl font-bold'>{step.title}</h4>
-                        {/* Fixed typo: text-zine -> text-zinc */}
                         <p className='text-zinc-500 text-sm mt-2 leading-relaxed'>
                             {step.para}
                         </p>

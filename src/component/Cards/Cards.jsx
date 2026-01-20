@@ -33,23 +33,6 @@ const Cards = (props) => {
             >
 
                 {/* Card Icons */}
-                <div className='flex justify-between items-center'>
-                    {/* Heart Icon */}
-                    <span 
-                        onClick={handleLikeClick} 
-                        className='text-zinc-300 text-xl md:text-3xl cursor-pointer hover:text-red-500'
-                    >
-                        <FaHeart />
-                    </span>
-
-                    {/* Plus Button */}
-                    <button 
-                        onClick={handleAddToCartClick} 
-                        className='bg-gradient-to-b from-orange-400 to-orange-500 text-white p-1 md:px-2 md:py-1 text-lg md:text-3xl rounded-lg md:rounded-[10px] active:scale-90 transition'
-                    >
-                        <HiOutlinePlusSm />
-                    </button>
-                </div>
 
                 {/* Product Image */}
                 <div className='w-full h-24 md:h-50 mt-2 md:mt-5 mb-2 md:mb-5'>

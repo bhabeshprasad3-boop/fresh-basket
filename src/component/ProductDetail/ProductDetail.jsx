@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import products from '../Product/ProductList'
 import { FaStar, FaShoppingCart, FaArrowLeft, FaTruck, FaShieldAlt } from 'react-icons/fa'
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'  
 
 const ProductInfo = () => {
   const { id } = useParams();
